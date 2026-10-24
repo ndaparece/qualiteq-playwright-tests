@@ -15,8 +15,12 @@ export default defineConfig({
     baseURL: process.env.BASE_URL ?? 'https://qualiteqhq.com',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    // Use an installed browser instead of Playwright's own, e.g. PW_CHANNEL=chrome
-    ...(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}),
+    // Locally, use the installed Google Chrome; CI uses Playwright's bundled Chromium.
+    // Override with PW_CHANNEL (e.g. msedge), or PW_CHANNEL=chromium for the bundled browser.
+    ...(() => {
+      const channel = process.env.PW_CHANNEL ?? (process.env.CI ? undefined : 'chrome');
+      return channel && channel !== 'chromium' ? { channel } : {};
+    })(),
   },
   projects: [
     {

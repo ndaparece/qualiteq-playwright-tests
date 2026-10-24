@@ -34,10 +34,11 @@ tests/screenshots.spec.ts  portfolio screenshots (run on demand)
 
 ```bash
 npm install
-npx playwright install chromium
 npm test            # desktop + mobile Chrome against the live site
 npm run report      # open the HTML report
 ```
+
+Locally the tests use your installed Google Chrome, so there is no browser to download. CI installs Playwright's own Chromium.
 
 Test a local copy before deploying by pointing `BASE_URL` at it:
 
@@ -45,7 +46,7 @@ Test a local copy before deploying by pointing `BASE_URL` at it:
 BASE_URL=http://localhost:8766 npm test
 ```
 
-Use an installed browser instead of Playwright's bundled Chromium with `PW_CHANNEL=chrome` (or `msedge`).
+Use a different browser with `PW_CHANNEL=msedge`, or Playwright's bundled Chromium with `PW_CHANNEL=chromium` (after `npx playwright install chromium`).
 
 Regenerate the portfolio screenshots with `npm run screenshots`.
 
