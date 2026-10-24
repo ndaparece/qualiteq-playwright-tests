@@ -1,0 +1,27 @@
+{
+  "name": "qualiteq-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end tests for the Qualiteq HQ website",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test --project=desktop-chrome --project=mobile-chrome",
+    "report": "playwright show-report",
+    "screenshots": "playwright test --project=portfolio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "playwright-core": "1.56.1"
+  }
+}
